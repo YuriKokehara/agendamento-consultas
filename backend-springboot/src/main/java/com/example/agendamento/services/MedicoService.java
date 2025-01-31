@@ -21,4 +21,10 @@ public class MedicoService {
 
         return new MedicoDTO(medicoSalvo.getNome(), medicoSalvo.getEspecialidade());
     }
+
+    public MedicoDTO buscarMedicoPorId(Long id) {
+        Medico medico = medicoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Médico não encontrado"));
+        return new MedicoDTO(medico.getNome(), medico.getEspecialidade());
+    }
 }

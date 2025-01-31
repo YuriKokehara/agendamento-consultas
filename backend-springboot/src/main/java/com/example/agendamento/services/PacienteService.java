@@ -22,4 +22,10 @@ public class PacienteService {
 
         return new PacienteDTO(pacienteSalvo.getName(), pacienteSalvo.getCpf(), pacienteSalvo.getTelefone());
     }
+
+    public PacienteDTO buscarPacientePorId(Long id) {
+        Paciente paciente = pacienteRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Paciente não encontrado"));
+        return new PacienteDTO(paciente.getName(), paciente.getCpf(), paciente.getTelefone());
+    }
 }

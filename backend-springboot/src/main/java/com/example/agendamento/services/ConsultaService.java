@@ -43,4 +43,15 @@ public class ConsultaService {
                 consultaSalva.getObservacoes()
         );
     }
+
+    public ConsultaDTO buscarConsultaPorId(Long id) {
+        Consulta consulta = consultaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Consulta não encontrada"));
+        return new ConsultaDTO(
+                consulta.getMedico().getId(),
+                consulta.getPaciente().getId(),
+                consulta.getDataHora(),
+                consulta.getObservacoes()
+        );
+    }
 }
