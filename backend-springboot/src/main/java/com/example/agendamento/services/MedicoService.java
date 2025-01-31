@@ -14,17 +14,17 @@ public class MedicoService {
 
     public MedicoDTO criarMedico(MedicoDTO medicoDTO) {
         Medico medico = new Medico();
-        medico.setNome(medicoDTO.getNome());
+        medico.setName(medicoDTO.getName());
         medico.setEspecialidade(medicoDTO.getEspecialidade());
 
         Medico medicoSalvo = medicoRepository.save(medico);
 
-        return new MedicoDTO(medicoSalvo.getNome(), medicoSalvo.getEspecialidade());
+        return new MedicoDTO(medicoSalvo.getName(), medicoSalvo.getEspecialidade());
     }
 
     public MedicoDTO buscarMedicoPorId(Long id) {
         Medico medico = medicoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Médico não encontrado"));
-        return new MedicoDTO(medico.getNome(), medico.getEspecialidade());
+        return new MedicoDTO(medico.getName(), medico.getEspecialidade());
     }
 }

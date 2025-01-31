@@ -13,15 +13,15 @@ public class Medico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String nome;
+    private String name;
     private String especialidade;
 
     public Medico() {
     }
 
-    public Medico(long id, String nome, String especialidade) {
+    public Medico(long id, String name, String especialidade) {
         this.id = id;
-        this.nome = nome;
+        this.name = name;
         this.especialidade = especialidade;
     }
 
@@ -33,12 +33,12 @@ public class Medico {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEspecialidade() {

@@ -15,7 +15,7 @@ public class MedicoController {
     private MedicoService medicoService;
 
     @PostMapping
-    public ResponseEntity<MedicoDTO> criarMedico (@RequestBody MedicoDTO medicoDTO){
+    public ResponseEntity<MedicoDTO> criarMedico(@RequestBody MedicoDTO medicoDTO){
         MedicoDTO medicoSalvo = medicoService.criarMedico(medicoDTO);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(medicoSalvo);

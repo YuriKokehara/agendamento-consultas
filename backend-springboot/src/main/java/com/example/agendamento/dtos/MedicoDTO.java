@@ -4,11 +4,11 @@ import lombok.Data;
 
 @Data
 public class MedicoDTO {
-    private String nome;
+    private String name;
     private String especialidade;
 
-    public MedicoDTO(String nome, String especialidade) {
-        this.nome = nome;
+    public MedicoDTO(String name, String especialidade) {
+        this.name = name;
         this.especialidade = especialidade;
     }
 }
