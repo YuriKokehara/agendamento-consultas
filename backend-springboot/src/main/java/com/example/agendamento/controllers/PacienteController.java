@@ -2,6 +2,7 @@ package com.example.agendamento.controllers;
 
 import com.example.agendamento.dtos.PacienteDTO;
 import com.example.agendamento.services.PacienteService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,7 @@ public class PacienteController {
     private PacienteService pacienteService;
 
     @PostMapping
-    public ResponseEntity<PacienteDTO> criarPaciente(@RequestBody PacienteDTO pacienteDTO){
+    public ResponseEntity<PacienteDTO> criarPaciente(@Valid @RequestBody PacienteDTO pacienteDTO){
         PacienteDTO pacienteSalvo = pacienteService.criarPaciente(pacienteDTO);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(pacienteDTO);
