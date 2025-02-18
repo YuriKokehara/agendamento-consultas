@@ -4,6 +4,7 @@ import com.example.agendamento.dtos.ConsultaDTO;
 import com.example.agendamento.entities.Consulta;
 import com.example.agendamento.entities.Medico;
 import com.example.agendamento.entities.Paciente;
+import com.example.agendamento.exception.BusinessException;
 import com.example.agendamento.repositories.ConsultaRepository;
 import com.example.agendamento.repositories.MedicoRepository;
 import com.example.agendamento.repositories.PacienteRepository;
@@ -24,9 +25,9 @@ public class ConsultaService {
 
     public ConsultaDTO agendarConsulta(ConsultaDTO consultaDTO){
         Medico medico = medicoRepository.findById(consultaDTO.getMedicoId())
-                .orElseThrow(() -> new RuntimeException("Médico não encontrado"));
+                .orElseThrow(() -> new BusinessException("Médico não encontrado"));
         Paciente paciente = pacienteRepository.findById(consultaDTO.getPacienteId())
-                .orElseThrow(() -> new RuntimeException("Paciente não encontrado"));
+                .orElseThrow(() -> new BusinessException("Paciente não encontrado"));
 
         Consulta consulta = new Consulta();
         consulta.setMedico(medico);
@@ -46,7 +47,7 @@ public class ConsultaService {
 
     public ConsultaDTO buscarConsultaPorId(Long id) {
         Consulta consulta = consultaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Consulta não encontrada"));
+                .orElseThrow(() -> new BusinessException("Consulta não encontrada"));
         return new ConsultaDTO(
                 consulta.getMedico().getId(),
                 consulta.getPaciente().getId(),

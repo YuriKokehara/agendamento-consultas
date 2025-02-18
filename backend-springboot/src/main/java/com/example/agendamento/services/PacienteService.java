@@ -2,6 +2,7 @@ package com.example.agendamento.services;
 
 import com.example.agendamento.dtos.PacienteDTO;
 import com.example.agendamento.entities.Paciente;
+import com.example.agendamento.exception.BusinessException;
 import com.example.agendamento.repositories.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,7 @@ public class PacienteService {
 
     public PacienteDTO buscarPacientePorId(Long id) {
         Paciente paciente = pacienteRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Paciente não encontrado"));
+                .orElseThrow(() -> new BusinessException("Paciente não encontrado"));
         return new PacienteDTO(paciente.getName(), paciente.getCpf(), paciente.getTelefone());
     }
 }
