@@ -65,7 +65,6 @@ Antes de executar o projeto, certifique-se de ter instalado:
 ---
 
 ## Estrutura do Projeto
-   ```
     src/
     ├── main/
     │   ├── java/
@@ -89,11 +88,11 @@ Antes de executar o projeto, certifique-se de ter instalado:
                     └── agendamento/
                         ├── services/          # Testes unitários
                         └── controllers/       # Testes de integração
-
 ---
 
 ## Testes
- Para executar todos os testes, use o comando:
+
+* Para executar todos os testes, use o comando:
    ```bash
    mvn test -Djdk.instrument.traceUsage=true
 ---
